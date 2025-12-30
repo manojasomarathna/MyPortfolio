@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manoja Somarathna - Full Stack Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #1a1a1a 100%);
+            color: #e6f1ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00d9ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #e6f1ff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d9ff;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #00d9ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 5% 4rem;
+        }
+
+        .hero .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h3 {
+            color: #00d9ff;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            font-weight: 600;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cv-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cv-download {
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            color: white;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .cv-view {
+            background: transparent;
+            color: #00d9ff;
+            border: 2px solid #00d9ff;
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .cv-download:hover {
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.5);
+        }
+
+        .cv-view:hover {
+            background: #00d9ff;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e6f1ff;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            transform: scale(1.1) rotate(12deg);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(135deg, #00d9ff, #a855f7) border-box;
+            box-shadow: 0 0 60px rgba(0, 217, 255, 0.4);
+            animation: float 3s ease-in-out infinite;
+            object-fit: cover;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title span {
+            color: #00d9ff;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        #about {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 50%;
+            border: 4px solid #00d9ff;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #00d9ff;
+        }
+
+        .about-text p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .skill-category h3 {
+            color: #00d9ff;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00d9ff, #a855f7);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .circular-progress {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+
+        .progress-ring-bar {
+            transition: stroke-dashoffset 1s ease;
+            stroke-linecap: round;
+        }
+
+        .percentage-text {
+            position: absolute;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00d9ff;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(168, 85, 247, 0.1));
+            border-radius: 20px;
+            filter: blur(20px);
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .education-card:hover::before {
+            filter: blur(30px);
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d9ff;
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .education-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .education-item {
+            padding-left: 1.5rem;
+            border-left: 2px solid #00d9ff;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-item.purple {
+            border-left-color: #a855f7;
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00d9ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item.purple .education-degree {
+            color: #a855f7;
+        }
+
+        .education-field {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-date {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d9ff;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+        }
+
+        .cert-card.cyan { border-color: rgba(0, 217, 255, 0.4); }
+        .cert-card.purple { border-color: rgba(168, 85, 247, 0.4); }
+        .cert-card.pink { border-color: rgba(236, 72, 153, 0.4); }
+
+        .cert-card h3 {
+            color: #00d9ff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-card .subtitle {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-card .date {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .cert-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .cert-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+        #projects {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: #00d9ff;
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .project-card h3 {
+            color: #00d9ff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: rgba(0, 217, 255, 0.2);
+            color: #00d9ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #00d9ff;
+        }
+
+        .contact-info p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #cbd5e1;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            color: #e6f1ff;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00d9ff, #a855f7);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 2rem;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero .container,
+            .about-content,
+            .skills-grid,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .profile-img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Portfolio.</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h3>Hello,It's Me</h3>
+                <h1>Manoja Somarathna</h1>
+                <h2>And I'm a <span style="color: #00d9ff;">Full Stack Developer</span></h2>
+                <p>Motivated and detail-oriented Full Stack Developer with hands-on experience in building responsive web applications. Passionate about problem-solving, learning new technologies, and contributing to real-world development projects.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cv-btn cv-download" onclick="downloadCV()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                        Download CV
+                    </a>
+                    <a href="#" class="cv-btn cv-view" onclick="viewCV()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z"/>
+                        </svg>
+                        View CV
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/manoja-m-somarathna-8018aa25a/" target="_blank" rel="noopener noreferrer">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/manojasomarathna" target="_blank" rel="noopener noreferrer">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:manojamsomarathna@gmail.com">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 10.724l9.615-6.903h.749c.904 0 1.636.732 1.636 1.636z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="my-photo.jpg" alt="Manoja Somarathna" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="about-content">
+                <img src="my-photo.jpg" alt="About" class="about-img">
+                <div class="about-text">
+                    <h3>Full Stack Developer!</h3>
+                    <p>I am a skilled Full Stack Developer currently pursuing my BSc (Hons) in Computing (Software Engineering) at the National Institute of Business Management (NIBM), Colombo. With expertise in both frontend and backend technologies, I create captivating website designs and implement them through comprehensive full-stack development.</p>
+                    <p>My passion lies in staying up-to-date with current design trends and leveraging my creativity to produce visually appealing and user-friendly applications. Throughout my career, I have developed a deep understanding of user experience (UX) and user interface (UI) principles.</p>
+                    <p>I specialize in technologies like React.js, Node.js, Spring Boot, and have experience with cloud platforms like AWS and Google Cloud. I believe that a well-designed application should not only look visually appealing but also provide a smooth and enjoyable interaction for users.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">My <span>Education</span></h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">🎓</div>
+                        <h3 style="font-size: 2rem; color: #00d9ff;">Education</h3>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-degree">BSc (Hons) in Computing</div>
+                        <div class="education-field">Software Engineering</div>
+                        <div class="education-institution">National Institute of Business Management</div>
+                        <div class="education-date">March 2023 - March 2027</div>
+                    </div>
+                    <div class="education-item purple">
+                        <div class="education-degree">Higher National Diploma</div>
+                        <div class="education-field">Software Engineering</div>
+                        <div class="education-date">March 2024 - April 2025</div>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="education-header">
+                        <div class="education-icon">🏆</div>
+                        <h3 style="font-size: 2rem; color: #a855f7;">Certifications</h3>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-degree">Oracle Cloud Infrastructure 2025</div>
+                        <div class="education-field">AI Foundations Associate</div>
+                        <div class="education-date">October 2025</div>
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7395418343953985536/" target="_blank" class="cert-link">View Certificate</a>
+                    </div>
+                    <div class="education-item purple">
+                        <div class="education-degree">Java Programming</div>
+                        <div class="education-field">Basics and Structure - Alison</div>
+                        <div class="education-date">October 2025</div>
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7389164050204745728/" target="_blank" class="cert-link">View Certificate</a>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-degree">Database Foundations</div>
+                        <div class="education-field">Oracle Academy</div>
+                        <div class="education-date">August 2024</div>
+                        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7377654916464566272/" target="_blank" class="cert-link">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML & CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript & TypeScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>React.js</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Angular</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Backend Development</h3>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Node.js & Express.js</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Java & Spring Boot</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MongoDB</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">My <span>Certifications</span></h2>
+            <div class="certifications-grid">
+                <div class="cert-card cyan">
+                    <h3>Oracle Cloud Infrastructure 2025</h3>
+                    <div class="subtitle">AI Foundations Associate</div>
+                    <div class="date">October 2025</div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7395418343953985536/" target="_blank" class="cert-link">View Certificate</a>
+                </div>
+                <div class="cert-card purple">
+                    <h3>Java Programming</h3>
+                    <div class="subtitle">Basics and Structure - Alison</div>
+                    <div class="date">October 2025</div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7389164050204745728/" target="_blank" class="cert-link">View Certificate</a>
+                </div>
+                <div class="cert-card pink">
+                    <h3>Database Foundations</h3>
+                    <div class="subtitle">Oracle Academy</div>
+                    <div class="date">August 2024</div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7377654916464566272/" target="_blank" class="cert-link">View Certificate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Latest <span>Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">✈️</div>
+                    <h3>PlanMyTrip – AI Travel Planning App</h3>
+                    <p>Developed an Android app with AI-driven budget management and personalized travel recommendations. Integrated Google Places API and Gemini API for real-time destination and cost data.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Google API</span>
+                        <span class="tech-tag">AI Integration</span>
+                    </div>
+                    <a href="https://github.com/manojasomarathna/planmytrip" target="_blank" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🏥</div>
+                    <h3>Clinic Management System</h3>
+                    <p>Built a comprehensive Android app to manage clinic operations, appointments, and patient records. Implemented patient registration, appointment management, and reporting features with automated reminders.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Kotlin</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Android Studio</span>
+                    </div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7363790888445104128/" target="_blank" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">📊</div>
+                    <h3>ERP System</h3>
+                    <p>Developed a complete ERP solution for customer and item management. Implemented invoice generation, reporting, and responsive UI with optimized SQL queries for improved data retrieval efficiency.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7358848929599279104/" target="_blank" class="project-link">View Project</a>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">🛠️</div>
+                    <h3>WorkNest – Service Booking App</h3>
+                    <p>Developed a service booking app connecting users with local providers. Implemented user authentication, live location integration, booking management, and WhatsApp support for seamless customer communication.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Android Studio</span>
+                        <span class="tech-tag">WhatsApp API</span>
+                    </div>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7314207958706397185/" target="_blank" class="project-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact <span>Me</span></h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Work Together</h3>
+                    <p>I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>manojamsomarathna@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>+94 742770633</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Baththaramulla, Colombo, Sri Lanka</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/manoja-m-somarathna-8018aa25a/" target="_blank" rel="noopener noreferrer">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/manojasomarathna" target="_blank" rel="noopener noreferrer">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:manojamsomarathna@gmail.com">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 10.724l9.615-6.903h.749c.904 0 1.636.732 1.636 1.636z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Enter Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter Your Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Enter Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Manoja Somarathna. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = this.querySelector('input[placeholder="Enter Your Name"]').value;
+            const email = this.querySelector('input[placeholder="Enter Your Email"]').value;
+            const subject = this.querySelector('input[placeholder="Enter Your Subject"]').value;
+            const message = this.querySelector('textarea').value;
+            
+            // Create email content
+            const emailSubject = `Portfolio Contact: ${subject}`;
+            const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Open email client
+            window.location.href = `mailto:manojamsomarathna@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+            
+            alert('Thank you for your message! Your email client will open to send the message.');
+            this.reset();
+        });
+
+        // CV Functions
+        function downloadCV() {
+            const cvLink = 'https://drive.google.com/drive/folders/1wkF18YJmaPqV5uQP1RourcpXdpe-11fW?dmr=1&ec=wgc-drive-hero-goto';
+            window.open(cvLink, '_blank');
+        }
+
+        function viewCV() {
+            const cvLink = 'https://drive.google.com/drive/folders/1wkF18YJmaPqV5uQP1RourcpXdpe-11fW?dmr=1&ec=wgc-drive-hero-goto';
+            window.open(cvLink, '_blank');
+        }
+
+        // Skill bar animation on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.skill-progress').forEach(bar => {
+                        bar.style.width = bar.style.width;
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const skillsSection = document.querySelector('#skills');
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+    </script>
+</body>
+</html>
